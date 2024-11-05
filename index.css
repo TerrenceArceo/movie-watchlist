@@ -36,22 +36,17 @@ html, body {
     font-weight: 700;
 }
 
-.form-wrapper {
-    
-}
-
 form {
     position: absolute;
-    top: 182px;
+    top: 185px;
     left: 8%;
     display: flex;
 }
 
 form input {
     width: 340px;
-    border: none;
-    padding: 1em;
     border: 1px solid #d1d5db;
+    padding: 0 1em;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
 }
@@ -60,9 +55,23 @@ form button {
     width: 120px;
     border: none;
     background-color: #f9fafb;
-    padding: 1em;
+    padding: .7em;
     border: 1px solid #d1d5db;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     cursor: pointer;
+}
+
+/* Main body */
+
+section#search-result-area {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-result-area h2 {
+    color: #dfdddd;
 }
