@@ -6,8 +6,10 @@ let movies = []
 
 
 mainBody.innerHTML = `
-    <img src="images/filmIcon.png">
-    <h2>Start exploring</h2>
+    <div class="explore-pop-up">
+        <img src="images/filmIcon.png">
+        <h2>Start exploring</h2>
+    </div>
 `
 
 async function searchTitle(title) {
@@ -28,12 +30,12 @@ async function getMovieResult() {
                 <div class="movie-info-container">
                     <div class="top-container">
                         <h2 class="title">${data.Title}</h2>
-                        <p class="rating">${data.imdbRating}</p>
+                        <p class="rating">&#11088; ${data.imdbRating}</p>
                     </div>
                     <div class="mid-container">
                         <p class="runtime">${data.Runtime}</p>
                         <p class="genre">${data.Genre}</p>
-                        <button class="add-btn">watchlist</button>
+                        <p> watchlist</p>
                     </div>
                     <p class="plot">${data.Plot}</p>
                 </div>
