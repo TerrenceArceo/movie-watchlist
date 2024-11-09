@@ -62,17 +62,20 @@ document.addEventListener("click", (e) => {
             `
         }
     } else if (e.target.dataset.add) {
-        console.log(e.target.dataset.add)
+        // console.log(e.target.dataset.add)
+        // console.log(e.target)
+        addMovie(movies, e.target.dataset.add)
     }
 })
 
-
-// function addMovie(movieID) {
-//     document.getElementById("movieID").addEventListener("click", () => {
-//         console.log(movieID)
-//     })
-// }
-
+function addMovie(films, filmID) {
+    films.filter(film => {
+        if (film.imdbID === filmID) {
+            console.log(film)
+            return film
+        }
+    })
+}
 
 // form.addEventListener("submit", (e) => {
 //     e.preventDefault()
