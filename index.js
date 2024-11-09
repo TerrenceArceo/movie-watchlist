@@ -24,9 +24,10 @@ async function getMovieResult() {
     for (let movie of movies) {
         const res = await fetch(`http://www.omdbapi.com/?apikey=13a9adac&i=${movie.imdbID}`)
         const data = await res.json()
+        console.log(data)
         htmlContent += `
             <div class="movie-container">
-                <img src="${data.Poster}">
+                <img class="poster" src="${data.Poster}">
                 <div class="movie-info-container">
                     <div class="top-container">
                         <h2 class="title">${data.Title}</h2>
@@ -35,7 +36,10 @@ async function getMovieResult() {
                     <div class="mid-container">
                         <p class="runtime">${data.Runtime}</p>
                         <p class="genre">${data.Genre}</p>
-                        <p> watchlist</p>
+                        <div class="add-container">
+                            <img class="add-icon" src="images/addIcon.png"  data-add="${data.imdbID}">
+                            <p>Watchlist</p>
+                        </div>
                     </div>
                     <p class="plot">${data.Plot}</p>
                 </div>
@@ -43,18 +47,42 @@ async function getMovieResult() {
         `
     }
     mainBody.innerHTML = htmlContent
+
 }
 
-
-form.addEventListener("submit", async (e) => {
+document.addEventListener("click", (e) => {
     e.preventDefault()
-
-    if (search.value) {
-        searchTitle(search.value)
-    } else {
-            mainBody.innerHTML = `
-        <img src="images/filmIcon.png">
-        <h2>Start exploring</h2>
-        `
+    if (e.target.dataset.search) {
+        if (search.value) {
+            searchTitle(search.value)
+        } else {
+                mainBody.innerHTML = `
+            <img src="images/filmIcon.png">
+            <h2>Start exploring</h2>
+            `
+        }
+    } else if (e.target.dataset.add) {
+        console.log(e.target.dataset.add)
     }
 })
+
+
+// function addMovie(movieID) {
+//     document.getElementById("movieID").addEventListener("click", () => {
+//         console.log(movieID)
+//     })
+// }
+
+
+// form.addEventListener("submit", (e) => {
+//     e.preventDefault()
+
+//     if (search.value) {
+//         searchTitle(search.value)
+//     } else {
+//             mainBody.innerHTML = `
+//         <img src="images/filmIcon.png">
+//         <h2>Start exploring</h2>
+//         `
+//     }
+// })

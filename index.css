@@ -12,7 +12,6 @@ html, body {
 .container {
     max-width: 550px;
     margin: 0 auto;
-    /* position: relative; */
     min-height: 100vh;
 }
 
@@ -22,7 +21,6 @@ html, body {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/THJJRUhNlEc.png');
     background-position: center top;
     color: white;
-    /* padding: 3em 0; */
     height: 205px;
     display: flex;
     align-items: center;
@@ -100,14 +98,14 @@ section#search-result-area {
     gap: 20px;
     border-bottom: 1px solid #E5E7EB;
     font-size: 14px;
-    padding: 1.5em;
+    padding: 1.5em 0;
 }
 
 .movie-container p {
     color: #6B7280;
 }
 
-.movie-container img {
+.poster {
     width: 100px;
     height: 148px;
 }
@@ -138,6 +136,14 @@ section#search-result-area {
     margin: 0;
 }
 
-.add-btn {
-    align-self: center;
+.add-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.add-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
