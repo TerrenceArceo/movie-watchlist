@@ -3,6 +3,7 @@ const form = document.getElementById("form")
 const search = document.getElementById("search")
 const apiKey = "13a9adac"
 let movies = []
+let targetObj = []
 
 document.addEventListener("click", (e) => {
     e.preventDefault()
@@ -31,9 +32,11 @@ mainBody.innerHTML = `
 function addMovie(films, filmID) {
     films.filter(film => {
         if (film.imdbID === filmID) {
-            localStorage.setItem(`${film.Title}`, JSON.stringify(film))
+            targetObj.push(film)
         }
     })
+
+    localStorage.setItem('targetObj', JSON.stringify(targetObj))
 }
 
 async function searchTitle(title) {
@@ -80,20 +83,3 @@ async function getMovieResult() {
     mainBody.innerHTML = htmlContent
 
 }
-
-
-
-
-
-// form.addEventListener("submit", (e) => {
-//     e.preventDefault()
-
-//     if (search.value) {
-//         searchTitle(search.value)
-//     } else {
-//             mainBody.innerHTML = `
-//         <img src="images/filmIcon.png">
-//         <h2>Start exploring</h2>
-//         `
-//     }
-// })
