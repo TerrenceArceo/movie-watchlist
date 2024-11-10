@@ -4,6 +4,22 @@ const search = document.getElementById("search")
 const apiKey = "13a9adac"
 let movies = []
 
+document.addEventListener("click", (e) => {
+    e.preventDefault()
+    if (e.target.dataset.search) {
+        if (search.value) {
+            searchTitle(search.value)
+        } else {
+                mainBody.innerHTML = `
+            <img src="images/filmIcon.png">
+            <h2>Start exploring</h2>
+            `
+        }
+    } else if (e.target.dataset.add) {
+        addMovie(movies, e.target.dataset.add)
+    }
+})
+
 
 mainBody.innerHTML = `
     <div class="explore-pop-up">
@@ -12,11 +28,27 @@ mainBody.innerHTML = `
     </div>
 `
 
+function addMovie(films, filmID) {
+    films.filter(film => {
+        if (film.imdbID === filmID) {
+            localStorage.setItem(`${film.Title}`, JSON.stringify(film))
+        }
+    })
+}
+
 async function searchTitle(title) {
     const res = await fetch(`http://www.omdbapi.com/?apikey=13a9adac&s=${title}`)
     const data = await res.json()
-        movies = data.Search
-        getMovieResult()
+        if (data.Response === "True") {
+            movies = data.Search
+            getMovieResult()
+        } else {
+            mainBody.innerHTML = `
+                <div class="explore-pop-up">
+                    <h2>Unable to find what you're looking for. Please try another search.</h2>
+                </div>
+            `
+        }
 }
 
 async function getMovieResult() {
@@ -24,7 +56,6 @@ async function getMovieResult() {
     for (let movie of movies) {
         const res = await fetch(`http://www.omdbapi.com/?apikey=13a9adac&i=${movie.imdbID}`)
         const data = await res.json()
-        console.log(data)
         htmlContent += `
             <div class="movie-container">
                 <img class="poster" src="${data.Poster}">
@@ -50,30 +81,9 @@ async function getMovieResult() {
 
 }
 
-document.addEventListener("click", (e) => {
-    e.preventDefault()
-    if (e.target.dataset.search) {
-        if (search.value) {
-            searchTitle(search.value)
-        } else {
-                mainBody.innerHTML = `
-            <img src="images/filmIcon.png">
-            <h2>Start exploring</h2>
-            `
-        }
-    } else if (e.target.dataset.add) {
-        addMovie(movies, e.target.dataset.add)
-    }
-})
 
-function addMovie(films, filmID) {
-    films.filter(film => {
-        if (film.imdbID === filmID) {
-            console.log(film)
-            localStorage.setItem(`${film.Title}`, JSON.stringify(film))
-        }
-    })
-}
+
+
 
 // form.addEventListener("submit", (e) => {
 //     e.preventDefault()
