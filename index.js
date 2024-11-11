@@ -18,9 +18,12 @@ document.addEventListener("click", (e) => {
         }
     } else if (e.target.dataset.add) {
         addMovie(movies, e.target.dataset.add)
+    } else if (e.target.dataset.nav === "list") {
+        window.location.assign("/watchlist.html")
+    } else if (e.target.dataset.nav === "main") {
+        window.location.assign("/index.html")
     }
 })
-
 
 mainBody.innerHTML = `
     <div class="explore-pop-up">
