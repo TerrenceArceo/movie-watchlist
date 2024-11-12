@@ -1,14 +1,27 @@
 // let retrievedArr = JSON.parse( localStorage.getItem("targetObj") )
 const listBody = document.getElementById("saved-movies")
 
-
-
 let values = []
 let keys = Object.keys(localStorage)
 let i = keys.length;
 
 while ( i-- ) {
     values.push( JSON.parse(localStorage.getItem(keys[i])) )
+}
+
+document.addEventListener("click", (e) => {
+    e.preventDefault()
+    if (e.target.dataset.remove) {
+        removeMovie(e.target.dataset.remove)
+        generateMovieList(values)
+    } else if (e.target.dataset.nav === "main") {
+        window.location.href = "index.html"
+    }
+})
+
+function removeMovie(key) {
+    localStorage.removeItem(key)
+    window.location.reload()
 }
 
 
@@ -27,7 +40,7 @@ function generateMovieList(arr) {
                         <p class="runtime">${movie.Runtime}</p>
                         <p class="genre">${movie.Genre}</p>
                         <div class="remove-container">
-                            <img class="remove-icon" src="images/removeIcon.png"  data-add="${movie.imdbID}">
+                            <img class="remove-icon" src="images/removeIcon.png"  data-remove="${movie.imdbID}">
                             <p>Remove</p>
                         </div>
                     </div>

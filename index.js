@@ -24,7 +24,7 @@ function addMovie(films, filmID) {
     films.filter(film => {
         if (film.imdbID === filmID) {
             // targetObj.push(film.Title)
-            localStorage.setItem(`${film.Title}`, JSON.stringify(film))
+            localStorage.setItem(`${film.imdbID}`, JSON.stringify(film))
         }
     })
 }
