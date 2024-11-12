@@ -4,7 +4,6 @@ const form = document.getElementById("form")
 const search = document.getElementById("search")
 const apiKey = "13a9adac"
 let movies = []
-let targetObj = []
 let moviesToChooseFrom = []
 
 document.addEventListener("click", (e) => {
@@ -23,7 +22,6 @@ document.addEventListener("click", (e) => {
 function addMovie(films, filmID) {
     films.filter(film => {
         if (film.imdbID === filmID) {
-            // targetObj.push(film.Title)
             localStorage.setItem(`${film.imdbID}`, JSON.stringify(film))
         }
     })
