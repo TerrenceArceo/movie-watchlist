@@ -37,7 +37,7 @@ async function searchTitle(title) {
             getMovieResult()
         } else {
             mainBody.innerHTML = `
-                <div class="explore-pop-up">
+                <div class="message-pop-up">
                     <h2>Unable to find what you're looking for. Please try another search.</h2>
                 </div>
             `
@@ -76,7 +76,7 @@ async function getMovieResult() {
 }
 
 mainBody.innerHTML = `
-    <div class="explore-pop-up">
+    <div class="message-pop-up">
         <img src="images/filmIcon.png">
         <h2>Start exploring</h2>
     </div>

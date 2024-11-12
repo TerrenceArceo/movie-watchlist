@@ -88,7 +88,7 @@ section#search-result-area {
     z-index: 1;
 }
 
-.explore-pop-up {
+.message-pop-up {
     position: absolute;
     top: calc(50%);
     left: calc(50%);
@@ -164,3 +164,15 @@ section#saved-movies {
     width: 452px;
     margin: 0 auto;
 }
+
+.add-movie-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #000;
+    cursor: pointer;
+}
+
+
+
