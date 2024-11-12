@@ -1,45 +1,32 @@
 const mainBody = document.getElementById("search-result-area")
+const listBody = document.getElementById("saved-movies")
 const form = document.getElementById("form")
 const search = document.getElementById("search")
 const apiKey = "13a9adac"
 let movies = []
 let targetObj = []
+let moviesToChooseFrom = []
 
 document.addEventListener("click", (e) => {
     e.preventDefault()
     if (e.target.dataset.search) {
-        if (search.value) {
             searchTitle(search.value)
-        } else {
-                mainBody.innerHTML = `
-            <img src="images/filmIcon.png">
-            <h2>Start exploring</h2>
-            `
-        }
     } else if (e.target.dataset.add) {
-        addMovie(movies, e.target.dataset.add)
+        addMovie(moviesToChooseFrom, e.target.dataset.add)
     } else if (e.target.dataset.nav === "list") {
-        window.location.assign("/watchlist.html")
+        window.location.href = "/watchlist.html"
     } else if (e.target.dataset.nav === "main") {
-        window.location.assign("/index.html")
+        window.location.href = "/index.html"
     }
 })
-
-mainBody.innerHTML = `
-    <div class="explore-pop-up">
-        <img src="images/filmIcon.png">
-        <h2>Start exploring</h2>
-    </div>
-`
 
 function addMovie(films, filmID) {
     films.filter(film => {
         if (film.imdbID === filmID) {
-            targetObj.push(film)
+            // targetObj.push(film.Title)
+            localStorage.setItem(`${film.Title}`, JSON.stringify(film))
         }
     })
-
-    localStorage.setItem('targetObj', JSON.stringify(targetObj))
 }
 
 async function searchTitle(title) {
@@ -62,6 +49,7 @@ async function getMovieResult() {
     for (let movie of movies) {
         const res = await fetch(`http://www.omdbapi.com/?apikey=13a9adac&i=${movie.imdbID}`)
         const data = await res.json()
+        moviesToChooseFrom.push(data)
         htmlContent += `
             <div class="movie-container">
                 <img class="poster" src="${data.Poster}">
@@ -86,3 +74,10 @@ async function getMovieResult() {
     mainBody.innerHTML = htmlContent
 
 }
+
+mainBody.innerHTML = `
+    <div class="explore-pop-up">
+        <img src="images/filmIcon.png">
+        <h2>Start exploring</h2>
+    </div>
+`

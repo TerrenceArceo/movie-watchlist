@@ -143,13 +143,15 @@ section#search-result-area {
     margin: 0;
 }
 
-.add-container {
+.add-container,
+.remove-container {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.add-icon {
+.add-icon,
+.remove-icon {
     width: 20px;
     height: 20px;
     cursor: pointer;
