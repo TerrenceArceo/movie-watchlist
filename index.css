@@ -12,11 +12,12 @@ html, body {
 .container {
     max-width: 550px;
     margin: 0 auto;
+    background-color: #fff;
 }
 
 .header {
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/THJJRUhNlEc.png');
+    background: linear-gradient(rgba(0, 0, 0, .85), rgba(0, 0, 0, .85)), url('images/THJJRUhNlEc.png');
     background-position: center top;
     color: white;
     height: 205px;
@@ -155,4 +156,11 @@ section#search-result-area {
     width: 20px;
     height: 20px;
     cursor: pointer;
+}
+
+/* saved movies styling */
+
+section#saved-movies {
+    width: 452px;
+    margin: 0 auto;
 }
