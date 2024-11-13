@@ -2,7 +2,7 @@ const listBody = document.getElementById("saved-movies")
 
 let values = []
 let keys = Object.keys(localStorage)
-let i = keys.length;
+let i = keys.length
 while ( i-- ) {
     values.push( JSON.parse(localStorage.getItem(keys[i])) )
 }
@@ -31,9 +31,9 @@ function generateMovieList(arr) {
         movieListHtml = `
             <div class="message-pop-up">
                 <h2>Your watchlist is looking a little empty...</h2>
-                <div class="add-movie-message">
+                <div class="add-movie-container">
                     <img src="images/addIcon.png" data-nav="main">
-                    <h3 data-nav="main">Let's add some movies!</h3>
+                    <h3 data-nav="main" class="add-movie-message">Let's add some movies!</h3>
                 </div>
             </div>
         `
