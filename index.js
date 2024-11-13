@@ -13,7 +13,7 @@ document.addEventListener("click", (e) => {
     } else if (e.target.dataset.add) {
         addMovie(moviesToChooseFrom, e.target.dataset.add)
     } else if (e.target.dataset.nav === "list") {
-        window.location.href = "/watchlist.html"
+        window.location.href = "https://sparkling-cuchufli-6959ef.netlify.app/watchlist.html"
     } else if (e.target.dataset.nav === "main") {
         window.location.href = "/index.html"
     }
