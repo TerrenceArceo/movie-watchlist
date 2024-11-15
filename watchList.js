@@ -13,7 +13,7 @@ document.addEventListener("click", (e) => {
         removeMovie(e.target.dataset.remove)
         generateMovieList(values)
     } else if (e.target.dataset.nav === "main") {
-        window.location.href = "index.html"
+        window.location.href = "/"
     }
 })
 
