@@ -5,6 +5,7 @@ const search = document.getElementById("search")
 const apiKey = "13a9adac"
 let movies = []
 let moviesToChooseFrom = []
+import filmIcon from "/images/filmIcon.png"
 
 document.addEventListener("click", (e) => {
     e.preventDefault()
@@ -75,7 +76,7 @@ async function getMovieResult() {
 
 mainBody.innerHTML = `
     <div class="message-pop-up">
-        <img src="images/filmIcon.png">
+        <img src="${filmIcon}">
         <h2>Start exploring</h2>
     </div>
 `
