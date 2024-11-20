@@ -29,7 +29,7 @@ function addMovie(films, filmID) {
 }
 
 async function searchTitle(title) {
-    const res = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${title}`)
+    const res = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${title}`)
     const data = await res.json()
         if (data.Response === "True") {
             movies = data.Search
@@ -46,7 +46,7 @@ async function searchTitle(title) {
 async function getMovieResult() {
     let htmlContent = ''
     for (let movie of movies) {
-        const res = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`)
+        const res = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${movie.imdbID}`)
         const data = await res.json()
         moviesToChooseFrom.push(data)
         htmlContent += `
