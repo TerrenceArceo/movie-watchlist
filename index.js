@@ -6,6 +6,7 @@ const apiKey = "13a9adac"
 let movies = []
 let moviesToChooseFrom = []
 import filmIcon from "/images/filmIcon.png"
+import addIcon from "/images/addIcon.png"
 
 document.addEventListener("click", (e) => {
     e.preventDefault()
@@ -61,7 +62,7 @@ async function getMovieResult() {
                         <p class="runtime">${data.Runtime}</p>
                         <p class="genre">${data.Genre}</p>
                         <div class="add-container">
-                            <img class="add-icon" src="images/addIcon.png"  data-add="${data.imdbID}">
+                            <img class="add-icon" src="${addIcon}"  data-add="${data.imdbID}">
                             <p>Watchlist</p>
                         </div>
                     </div>
