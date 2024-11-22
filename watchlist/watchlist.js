@@ -1,4 +1,6 @@
 const listBody = document.getElementById("saved-movies")
+import addIcon from "/images/addIcon.png"
+import removeIcon from "/images/removeIcon.png"
 
 let values = []
 let keys = Object.keys(localStorage)
@@ -32,7 +34,7 @@ function generateMovieList(arr) {
             <div class="message-pop-up">
                 <h2>Your watchlist is looking a little empty...</h2>
                 <div class="add-movie-container">
-                    <img src="images/addIcon.png" data-nav="main">
+                    <img src="${addIcon}" data-nav="main">
                     <h3 data-nav="main" class="add-movie-message">Let's add some movies!</h3>
                 </div>
             </div>
@@ -51,7 +53,7 @@ function generateMovieList(arr) {
                             <p class="runtime">${movie.Runtime}</p>
                             <p class="genre">${movie.Genre}</p>
                             <div class="remove-container">
-                                <img class="remove-icon" src="images/removeIcon.png"  data-remove="${movie.imdbID}">
+                                <img class="remove-icon" src="${removeIcon}"  data-remove="${movie.imdbID}">
                                 <p>Remove</p>
                             </div>
                         </div>
